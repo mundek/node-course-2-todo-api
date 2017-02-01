@@ -1,11 +1,11 @@
 // const MongoClient = require('mongodb').MongoClient;
 const {MongoClient, ObjectID} = require('mongodb');
 
-MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
+MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   if (err) {
-    return console.log('Unable to connect to mongodb server.');
+    return console.log('Unable to connect to MongoDB server');
   }
-  console.log('Connected to mongodb server.');
+  console.log('Connected to MongoDB server');
 
   // deleteMany
   // db.collection('Todos').deleteMany({text: 'Eat lunch'}).then((result) => {
@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
   // });
 
   // deleteOne
-  // db.collection('Todos').deleteOne({text: 'Eat lunch')}).then((result) => {
+  // db.collection('Todos').deleteOne({text: 'Eat lunch'}).then((result) => {
   //   console.log(result);
   // });
 
@@ -22,14 +22,12 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
   //   console.log(result);
   // });
 
-  // deleteMany
-  db.collection('Users').deleteMany({name: 'Kilgore Trout'}).then((result) => {
-    console.log(result);
-  });
+  // db.collection('Users').deleteMany({name: 'Andrew'});
 
-  // deleteOne
-  db.collection('Users').deleteOne({_id: new ObjectID('588432928cf5a3251dcb5ef3')}).then((result) => {
-    console.log(result);
+  db.collection('Users').findOneAndDelete({
+    _id: new ObjectID("57ac8d47878a299e5dc21bc8")
+  }).then((results) => {
+    console.log(JSON.stringify(results, undefined, 2));
   });
 
   // db.close();
