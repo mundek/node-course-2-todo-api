@@ -12,6 +12,7 @@ var {authenticate} = require('./middleware/authenticate');
 
 var app = express();
 const port = process.env.PORT;
+console.log("process.env.PORT", process.env.PORT);
 
 app.use(bodyParser.json());
 
@@ -151,6 +152,8 @@ app.delete('/users/me/token', authenticate, (req, res) => {
     res.status(400).send();
   });
 });
+
+console.log("port: ", port);
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
